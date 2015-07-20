@@ -26,22 +26,11 @@ module TheRole
 
     # http://stackoverflow.com/questions/6279325/adding-to-rails-autoload-path-from-gem
     # config.to_prepare do; end
-    _root_ = File.expand_path('../../',  __FILE__)
-    # Loading of concerns
-    #config.autoload_paths << "#{_root_}/config/routes.rb"
-    config.autoload_paths << "#{_root_}/app/controllers/concerns/controller.rb"
-    config.autoload_paths << "#{_root_}/app/models/concerns/**"
-
   end
 end
 
-_root_ = File.expand_path('../../',  __FILE__)
-require_dependency "#{_root_}/config/routes.rb"
-require_dependency "#{_root_}/app/controllers/concerns/controller.rb"
-
-%w[ base role user ].each do |concern|
-  require_dependency "#{_root_}/app/models/concerns/#{concern}.rb"
-end
+# Loading of concerns
+require_relative "../config/routes.rb"
 
 if defined?(ActiveRecord::Base)
   ActiveRecord::Base.extend TheRole::ActiveRecord
