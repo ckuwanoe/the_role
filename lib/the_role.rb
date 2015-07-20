@@ -28,7 +28,7 @@ module TheRole
     # config.to_prepare do; end
     _root_ = File.expand_path('../../',  __FILE__)
     # Loading of concerns
-    config.autoload_paths << "#{_root_}/config/routes.rb"
+    #config.autoload_paths << "#{_root_}/config/routes.rb"
     config.autoload_paths << "#{_root_}/app/controllers/concerns/controller.rb"
     config.autoload_paths << "#{_root_}/app/models/concerns/**"
 
@@ -37,11 +37,11 @@ end
 
 _root_ = File.expand_path('../../',  __FILE__)
 require "#{_root_}/config/routes.rb"
-require "#{_root_}/app/controllers/concerns/controller.rb"
+#require "#{_root_}/app/controllers/concerns/controller.rb"
 
-%w[ base role user ].each do |concern|
-  require "#{_root_}/app/models/concerns/#{concern}.rb"
-end
+#%w[ base role user ].each do |concern|
+#  require "#{_root_}/app/models/concerns/#{concern}.rb"
+#end
 
 if defined?(ActiveRecord::Base)
   ActiveRecord::Base.extend TheRole::ActiveRecord
